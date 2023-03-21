@@ -1,17 +1,18 @@
 import useAppHook from "./hooks/useApphook";
 import {
   BsArrowDown,
+  BsStarFill,
+  BsStarHalf,
   img1,
   img2,
   img3,
   img4,
   img5,
   img6,
-  img7,
-  img8,
 } from "./assets";
 import "./App.css";
 import data from "./data/data.json";
+import Stars from "./component/Stars";
 
 function App() {
   let arr = [img1, img2, img3, img4, img5, img6];
@@ -22,7 +23,7 @@ function App() {
     <div className="App">
       <div>
         <h1>{rating}</h1>
-        <h2>*****</h2>
+        <Stars value={rating} />
         <h3 className="name">{name}</h3>
         <p className="title">{title}</p>
         <div className="about-container">
