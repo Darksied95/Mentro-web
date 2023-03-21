@@ -1,18 +1,10 @@
 import useAppHook from "./hooks/useApphook";
-import {
-  BsArrowDown,
-  BsStarFill,
-  BsStarHalf,
-  img1,
-  img2,
-  img3,
-  img4,
-  img5,
-  img6,
-} from "./assets";
+import { BsArrowDown, img1, img2, img3, img4, img5, img6 } from "./assets";
 import "./App.css";
 import data from "./data/data.json";
 import Stars from "./component/Stars";
+import ChangingSingleImage from "./component/ChangingSingleImage";
+import ChangingComponent from "./component/ChangingComponent";
 
 function App() {
   let arr = [img1, img2, img3, img4, img5, img6];
@@ -22,9 +14,27 @@ function App() {
   return (
     <div className="App">
       <div>
-        <h1>{rating}</h1>
-        <Stars value={rating} />
-        <h3 className="name">{name}</h3>
+        <ChangingComponent
+          data={data}
+          datatype={"rating"}
+          currentIndex={currentIndex}
+          tagName={"h1"}
+        />
+        {/* <Stars value={rating} /> */}
+        {/* <ChangingComponent
+          data={data}
+          currentIndex={currentIndex}
+          tagName={Stars}
+          className={"pp"}
+        /> */}
+        {/* <h3 className="name">{name}</h3> */}
+        <ChangingComponent
+          data={data}
+          datatype={"name"}
+          currentIndex={currentIndex}
+          className="name"
+          tagName={"h3"}
+        />
         <p className="title">{title}</p>
         <div className="about-container">
           <p>{about}</p>
@@ -47,11 +57,11 @@ function App() {
         <div className="card-container">
           {arr.map((each, index) => {
             const classNames = classNameSetter(index);
-            return <img src={each} className={classNames} />;
+            return <img src={each} className={classNames} key={index} />;
           })}
         </div>
       </div>
-      <img src={arr[currentIndex]} className="single-image" />
+      <ChangingSingleImage arr={arr} currentIndex={currentIndex} />
     </div>
   );
 }

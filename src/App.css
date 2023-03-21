@@ -47,7 +47,17 @@ img {
 
 h1 {
   color: var(--clr-green);
-  margin-bottom: 1rem;
+  position: absolute;
+  transition: all 500ms ease-in-out;
+}
+.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.inactive {
+  opacity: 0;
+  transform: scale(0.5);
 }
 
 h2 {
@@ -120,7 +130,7 @@ h2 {
   border-radius: 50%;
   object-fit: cover;
   position: absolute;
-  transition: all 100ms ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
 .single-image {
@@ -131,12 +141,17 @@ h2 {
   border-radius: 50%;
   top: 30%;
   left: 45%;
-  transition: all 300ms ease-in-out;
+  transition: all 400ms ease-in-out;
 }
 
-/* .fullWidth {
-  width: 300px;
-} */
+.activeSingleCard {
+  transform: scale(1);
+  opacity: 1;
+}
+.inActiveSingleCard {
+  transform: scale(0.5) rotate(30deg);
+  opacity: 0;
+}
 
 .activeCard {
   top: -5%;
