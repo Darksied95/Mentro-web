@@ -95,10 +95,10 @@ h2 {
 .outcast {
   background-color: #7abd87;
   position: absolute;
-  width: 90vw;
+  width: 70vw;
   aspect-ratio: 1;
-  top: -40%;
-  right: -15%;
+  top: -60%;
+  right: 0%;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -120,9 +120,10 @@ h2 {
   border-radius: 50%;
   object-fit: cover;
   position: absolute;
+  transition: all 100ms ease-in-out;
 }
 
-.active-card {
+.activeCard {
   top: -5%;
   left: 40%;
 }
@@ -148,4 +149,5 @@ h2 {
 
 .inActiveCard {
   top: 50%;
+  left: 50%;
 }

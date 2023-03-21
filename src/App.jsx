@@ -1,8 +1,20 @@
-import { useState } from "react";
-import { BsArrowDown, img1 } from "./assets";
+import useAppHook from "./hooks/useApphook";
+import {
+  BsArrowDown,
+  img1,
+  img2,
+  img3,
+  img4,
+  img5,
+  img6,
+  img7,
+  img8,
+} from "./assets";
 import "./App.css";
 
 function App() {
+  let arr = [img1, img2, img3, img4, img5, img6, img7, img8];
+  const { classNameSetter, handleIncrement, handleDecrement } = useAppHook();
   return (
     <div className="App">
       <div>
@@ -18,10 +30,10 @@ function App() {
             quis fugiat.
           </p>
           <div>
-            <button>
+            <button onClick={() => handleIncrement(arr)}>
               <BsArrowDown />
             </button>
-            <button>
+            <button onClick={() => handleDecrement(arr)}>
               <BsArrowDown />
             </button>
           </div>
@@ -33,7 +45,10 @@ function App() {
       </div>
       <div className="outcast">
         <div className="card-container">
-          <img src={img1} className="card-image pp" />
+          {arr.map((each, index) => {
+            const classNames = classNameSetter(index);
+            return <img src={each} className={classNames} />;
+          })}
         </div>
         <img />
       </div>
