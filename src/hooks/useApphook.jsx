@@ -65,7 +65,10 @@ function useAppHook() {
     }
   }
 
-  function classNameSetter(index) {
+  function classNameSetter(index, single) {
+    if (single) {
+      return "widthFull";
+    }
     let className = "card-image ";
     switch (index) {
       case currentIndex:
@@ -90,7 +93,7 @@ function useAppHook() {
     return className;
   }
 
-  return { handleIncrement, handleDecrement, classNameSetter };
+  return { handleIncrement, handleDecrement, classNameSetter, currentIndex };
 }
 
 export default useAppHook;

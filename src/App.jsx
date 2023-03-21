@@ -11,24 +11,22 @@ import {
   img8,
 } from "./assets";
 import "./App.css";
+import data from "./data/data.json";
 
 function App() {
-  let arr = [img1, img2, img3, img4, img5, img6, img7, img8];
-  const { classNameSetter, handleIncrement, handleDecrement } = useAppHook();
+  let arr = [img1, img2, img3, img4, img5, img6];
+  const { classNameSetter, handleIncrement, handleDecrement, currentIndex } =
+    useAppHook();
+  const { rating, about, name, title } = data[currentIndex];
   return (
     <div className="App">
       <div>
-        <h1>4.9</h1>
+        <h1>{rating}</h1>
         <h2>*****</h2>
-        <h3 className="name">Saurav Pal</h3>
-        <p className="title">SDE - 2 @Amazon</p>
+        <h3 className="name">{name}</h3>
+        <p className="title">{title}</p>
         <div className="about-container">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum, ad.
-            A voluptatum nemo eveniet ratione ducimus expedita non porro esse
-            maiores veniam commodi praesentium eligendi sint inventore sequi,
-            quis fugiat.
-          </p>
+          <p>{about}</p>
           <div>
             <button onClick={() => handleIncrement(arr)}>
               <BsArrowDown />
@@ -43,6 +41,7 @@ function App() {
           <button>Saumya Singh</button>
         </div>
       </div>
+
       <div className="outcast">
         <div className="card-container">
           {arr.map((each, index) => {
@@ -50,8 +49,8 @@ function App() {
             return <img src={each} className={classNames} />;
           })}
         </div>
-        <img />
       </div>
+      <img src={arr[currentIndex]} className="single-image" />
     </div>
   );
 }
