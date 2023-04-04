@@ -4,7 +4,8 @@ import "./App.css";
 import data from "./data/data.json";
 import Stars from "./component/Stars";
 import ChangingSingleImage from "./component/ChangingSingleImage";
-import ChangingComponent from "./component/ChangingComponent";
+import { motion, AnimatePresence } from "framer-motion";
+import AnimateContentChange from "./component/AnimateContentChange";
 
 function App() {
   let arr = [img1, img2, img3, img4, img5, img6];
@@ -14,27 +15,23 @@ function App() {
   return (
     <div className="App">
       <div>
-        <ChangingComponent
-          data={data}
-          datatype={"rating"}
-          currentIndex={currentIndex}
-          tagName={"h1"}
-        />
-        {/* <Stars value={rating} /> */}
-        {/* <ChangingComponent
-          data={data}
-          currentIndex={currentIndex}
-          tagName={Stars}
-          className={"pp"}
-        /> */}
-        {/* <h3 className="name">{name}</h3> */}
-        <ChangingComponent
-          data={data}
-          datatype={"name"}
-          currentIndex={currentIndex}
-          className="name"
-          tagName={"h3"}
-        />
+        <AnimateContentChange>
+          <motion.h1
+            key={currentIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="animatedChild"
+          >
+            {rating}
+          </motion.h1>
+        </AnimateContentChange>
+
+        <Stars value={rating} />
+
+        <h3 className="name">{name}</h3>
+
         <p className="title">{title}</p>
         <div className="about-container">
           <p>{about}</p>
