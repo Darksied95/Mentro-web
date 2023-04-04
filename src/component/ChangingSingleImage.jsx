@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 
-const ChangingSingleImage = ({ arr, currentIndex }) => {
+const ChangingSingleImage = ({ imagesArray, currentIndex }) => {
   return (
     <div>
-      {arr.map((each, index) => {
+      {imagesArray.map((each, index) => {
         let className = "single-image ";
         if (index === currentIndex) {
           className += "activeSingleCard";

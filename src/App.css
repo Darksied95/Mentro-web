@@ -87,11 +87,11 @@ h2 {
   margin-bottom: 2em;
 }
 
-.about-container > p {
+.about-container p {
   width: 35%;
 }
 
-.about-container > div {
+.about-container .buttonsHolder {
   flex: 1;
   display: flex;
   justify-content: space-between;

@@ -4,22 +4,24 @@ import "./App.css";
 import data from "./data/data.json";
 import Stars from "./component/Stars";
 import ChangingSingleImage from "./component/ChangingSingleImage";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import AnimateContentChange from "./component/AnimateContentChange";
+import RotatingPictureComponent from "./component/RotatingPictureComponent";
 
 function App() {
-  let arr = [img1, img2, img3, img4, img5, img6];
   const { classNameSetter, handleIncrement, handleDecrement, currentIndex } =
     useAppHook();
   const { rating, about, name, title } = data[currentIndex];
+  const imagesArray = [img1, img2, img3, img4, img5, img6];
+
   return (
     <div className="App">
       <div>
         <AnimateContentChange>
           <motion.h1
             key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 10, x: 12 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             className="animatedChild"
@@ -30,16 +32,49 @@ function App() {
 
         <Stars value={rating} />
 
-        <h3 className="name">{name}</h3>
+        <AnimateContentChange>
+          <motion.h3
+            key={currentIndex}
+            initial={{ opacity: 0, y: 10, x: 12 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="animatedChild name"
+          >
+            {name}
+          </motion.h3>
+        </AnimateContentChange>
 
-        <p className="title">{title}</p>
+        <AnimateContentChange>
+          <motion.p
+            key={currentIndex}
+            initial={{ opacity: 0, y: 10, x: 12 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="animatedChild title"
+          >
+            {title}
+          </motion.p>
+        </AnimateContentChange>
         <div className="about-container">
-          <p>{about}</p>
-          <div>
-            <button onClick={() => handleIncrement(arr)}>
+          <AnimateContentChange>
+            <motion.p
+              key={currentIndex}
+              initial={{ opacity: 0, y: 10, x: 12 }}
+              animate={{ opacity: 1, y: 0, x: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="animatedChild"
+            >
+              {about}
+            </motion.p>
+          </AnimateContentChange>
+          <div className="buttonsHolder">
+            <button onClick={() => handleIncrement(imagesArray)}>
               <BsArrowDown />
             </button>
-            <button onClick={() => handleDecrement(arr)}>
+            <button onClick={() => handleDecrement(imagesArray)}>
               <BsArrowDown />
             </button>
           </div>
@@ -50,15 +85,14 @@ function App() {
         </div>
       </div>
 
-      <div className="outcast">
-        <div className="card-container">
-          {arr.map((each, index) => {
-            const classNames = classNameSetter(index);
-            return <img src={each} className={classNames} key={index} />;
-          })}
-        </div>
-      </div>
-      <ChangingSingleImage arr={arr} currentIndex={currentIndex} />
+      <RotatingPictureComponent
+        imagesArray={imagesArray}
+        classNameSetter={classNameSetter}
+      />
+      <ChangingSingleImage
+        imagesArray={imagesArray}
+        currentIndex={currentIndex}
+      />
     </div>
   );
 }
