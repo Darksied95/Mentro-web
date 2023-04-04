@@ -3,7 +3,13 @@ import Stars from "./Stars";
 import { motion } from "framer-motion";
 import { BsArrowDown } from "../assets";
 
-const Main = ({ data, currentIndex, handleIncrement, handleDecrement }) => {
+const Main = ({
+  data,
+  currentIndex,
+  handleIncrement,
+  handleDecrement,
+  imagesArray,
+}) => {
   const { rating, about, name, title } = data;
   return (
     <main>

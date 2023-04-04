@@ -12,7 +12,12 @@ function App() {
 
   return (
     <div className="App">
-      <Main data={data[currentIndex]} currentIndex={currentIndex} {...rest} />
+      <Main
+        data={data[currentIndex]}
+        currentIndex={currentIndex}
+        imagesArray={imagesArray}
+        {...rest}
+      />
 
       <RotatingPictureComponent
         imagesArray={imagesArray}
