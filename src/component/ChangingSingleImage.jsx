@@ -1,18 +1,20 @@
-import React, { useRef } from "react";
+import React from "react";
 
-const ChangingSingleImage = ({ imagesArray, currentIndex }) => {
+const ChangingSingleImage = ({ imagesArray, currentIndex: c }) => {
   return (
-    <div>
-      {imagesArray.map((each, index) => {
-        let className = "single-image ";
-        if (index === currentIndex) {
-          className += "activeSingleCard";
-        } else {
-          className += "inActiveSingleCard";
-        }
-        return <img src={each} className={className} key={index} />;
+    <>
+      {imagesArray.map((each, i) => {
+        return (
+          <img
+            key={i}
+            src={each}
+            className={`single-image ${
+              i == c ? "activeSingleCard" : "inActiveSingleCard"
+            }`}
+          />
+        );
       })}
-    </div>
+    </>
   );
 };
 
